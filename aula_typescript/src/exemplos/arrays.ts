@@ -1,4 +1,4 @@
-import type { Aluno } from "./exemplo-objetos";
+import type { Aluno } from './exemplo-objetos';
 
 const alunos = ['Alvaro', 'Mario', 'Gabriel', 112];
 
@@ -83,4 +83,17 @@ export function tirarPontoTurma(turma: Array<Aluno>, pontoNegativo: number) {
   });
 
   return turmaNegativa;
+}
+
+export function mostraArray() {
+  const cliente1 = ['Alvaro', 'Gabriel'];
+  const cliente2 = [...cliente1];
+
+  const [primeiro, outroItem, terceiro] = cliente1;
+
+  cliente2.push('Ricardo');
+
+  console.log(cliente2);
+  console.log(cliente1);
+  console.log(primeiro, outroItem, terceiro);
 }

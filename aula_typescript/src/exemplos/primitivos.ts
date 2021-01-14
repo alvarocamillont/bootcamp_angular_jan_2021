@@ -4,7 +4,7 @@ export function exemploTipos() {
   const ehHumano: boolean = true;
 
   console.log('O número é ' + numero.toString());
-  console.log('O nome é ' + nome);
+  console.log(`O nome é ${nome}`);
   console.log('Ele é humano?' + ehHumano);
 }
 
@@ -18,7 +18,7 @@ export function exemploIfLoop() {
     } else {
       console.log('Não chegou');
     }
-    console.log('Contador ' + contador);
+    console.log(`Contador ${contador}`);
     contador++;
   }
 }
