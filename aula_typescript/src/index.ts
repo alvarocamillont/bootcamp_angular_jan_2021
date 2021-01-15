@@ -15,16 +15,15 @@ import {
   retornaAluno,
   Turma,
 } from './exemplos/exemplo-objetos';
+import {
+  api,
+  buscaPorNome,
+  filtroPorCodigo,
+  mediaPedido,
+  produtoMaisBarato,
+} from './exemplos/exercicio';
 
-mostraArray();
-mostraAluno();
-
-const alunoNovo = retornaAluno('Lucas', 8);
-console.log(alunoNovo);
-
-estaProvado(10);
-estaProvado(0);
-
-const turma: any = {};
-
-imprimeTurma(turma);
+console.log(`A média do pedido ${mediaPedido(api)}`);
+console.log(`O produto mais barato é  ${produtoMaisBarato(api)}`);
+console.log(`O produto do código 0001 `, filtroPorCodigo(api, '0001'));
+console.log(`O produto da descrição SWITCH é `, buscaPorNome(api, 'SWITCH'));
