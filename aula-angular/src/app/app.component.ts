@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Alunos } from './alunos';
 
 const URL = 'http://api.com';
 @Component({
@@ -8,8 +9,17 @@ const URL = 'http://api.com';
 })
 export class AppComponent {
   title = 'Teste Angular';
-  nome = 'Alvaro';
+  nome = 'Gabriel';
+
+  alunos: Alunos = [
+    { nome: 'Alvaro', dataNascimento: '1987-11-06' },
+    { nome: 'Gabriel', dataNascimento: '2017-06-29' },
+  ];
 
   numero1 = 5;
   numero2 = 10;
+
+  alertaTurma(turma: string) {
+    alert(`Turma ${turma} selecionada`);
+  }
 }
