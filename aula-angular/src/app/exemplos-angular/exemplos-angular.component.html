@@ -1,0 +1,8 @@
+<h2>Olá aluno {{ nomeAluno }}</h2>
+<h2>Da turma {{ turma }}</h2>
+
+<input type="text" [(ngModel)]="nomeAluno" />
+
+<input type="text" [value]="turma" #inputTurma />
+
+<button (click)="atualizaTurma(inputTurma.value)">Atualiza Turma</button>
