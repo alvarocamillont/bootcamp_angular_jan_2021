@@ -9,7 +9,8 @@ export class ExemplosAngularComponent {
   nomeAluno = 'Alvaro';
   turma = 'Angular';
 
-  atualizaTurma(turma: string) {
-    this.turma = turma;
+  atualizaTurma(input: any) {
+    console.log('Botão');
+    this.turma = input.value;
   }
 }

@@ -3,6 +3,11 @@
 
 <input type="text" [(ngModel)]="nomeAluno" />
 
-<input type="text" [value]="turma" #inputTurma />
+<input
+  type="text"
+  [value]="turma"
+  (blur)="atualizaTurma($event.target)"
+  #inputTurma
+/>
 
-<button (click)="atualizaTurma(inputTurma.value)">Atualiza Turma</button>
+<button (click)="atualizaTurma(inputTurma)">Atualiza Turma</button>
