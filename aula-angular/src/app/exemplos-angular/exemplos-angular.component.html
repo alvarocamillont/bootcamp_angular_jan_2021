@@ -10,18 +10,24 @@
   #inputTurma
 />
 
-<button (click)="atualizaTurma(inputTurma)">Abrir Lista</button>
+<button (click)="abriLista()">Abrir Lista</button>
 
-<div *ngIf="listaAlunos?.length; else nenhumaLista">
-  <ul>
-    <li *ngFor="let aluno of listaAlunos">
-      Nome: {{ aluno.nome }} Data de Nascimento:{{
-        aluno.dataNascimento | date: "dd/MM/yyyy"
-      }}
-    </li>
-  </ul>
+<div *ngIf="mostraLista; else listaFechada">
+  <div *ngIf="listaAlunos?.length; else nenhumaLista">
+    <ul>
+      <li *ngFor="let aluno of listaAlunos">
+        Nome: {{ aluno.nome }} Data de Nascimento:{{
+          aluno.dataNascimento | date: "dd/MM/yyyy"
+        }}
+      </li>
+    </ul>
+  </div>
 </div>
 
 <ng-template #nenhumaLista>
   <p>Lista indisponível</p>
+</ng-template>
+
+<ng-template #listaFechada>
+  <p>Lista Fechada</p>
 </ng-template>

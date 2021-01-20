@@ -15,6 +15,8 @@ export class ExemplosAngularComponent {
 
   turma = 'Angular';
 
+  mostraLista = true;
+
   @Output()
   selecaoTurma = new EventEmitter<string>();
 
@@ -23,5 +25,9 @@ export class ExemplosAngularComponent {
     console.log(this.listaAlunos);
     this.turma = input.value;
     this.selecaoTurma.emit(this.turma);
+  }
+
+  abriLista() {
+    this.mostraLista = !this.mostraLista;
   }
 }
