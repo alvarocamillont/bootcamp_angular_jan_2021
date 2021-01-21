@@ -122,5 +122,8 @@
       }
     }
   },
-  "defaultProject": "front-dwc"
+  "defaultProject": "front-dwc",
+  "cli": {
+    "analytics": "d6f4d583-9a03-4c5d-a53e-5f6d81b17f1f"
+  }
 }
