@@ -1,3 +1,11 @@
-<po-page-default>
-  <p>clientes works!</p>
-</po-page-default>
+<po-page-list
+  p-title="Clientes"
+  [p-actions]="actions"
+  [p-breadcrumb]="breadcrumb"
+>
+  <po-table
+    [p-columns]="colunas"
+    [p-items]="items"
+    [p-actions]="tableActions"
+  ></po-table>
+</po-page-list>
