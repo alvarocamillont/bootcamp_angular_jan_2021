@@ -1,17 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   PoBreadcrumb,
   PoPageAction,
   PoTableAction,
   PoTableColumn,
 } from '@po-ui/ng-components';
+import { Subscription } from 'rxjs';
+import { ClientesService } from './clientes.service';
 
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
   styleUrls: ['./clientes.component.css'],
 })
-export class ClientesComponent implements OnInit {
+export class ClientesComponent implements OnInit, OnDestroy {
+  private subscriptions = new Subscription();
+
   actions: Array<PoPageAction> = [
     {
       label: 'Incluir',
@@ -37,9 +41,19 @@ export class ClientesComponent implements OnInit {
     { action: this.editar.bind(this), label: 'Editar' },
   ];
 
-  constructor() {}
+  constructor(private clientesService: ClientesService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.subscriptions.add(
+      this.clientesService.retornaClientes().subscribe((items) => {
+        this.items = items;
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
 
   visualizar() {}
 
