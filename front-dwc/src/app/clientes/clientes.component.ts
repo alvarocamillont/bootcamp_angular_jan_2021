@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   PoBreadcrumb,
   PoPageAction,
@@ -7,7 +8,7 @@ import {
 } from '@po-ui/ng-components';
 import { Observable, Subscription } from 'rxjs';
 import { ClientesService } from './clientes.service';
-import { Clientes } from './models/clientes';
+import { Cliente, Clientes } from './models/clientes';
 
 @Component({
   selector: 'app-clientes',
@@ -40,13 +41,18 @@ export class ClientesComponent implements OnInit {
     { action: this.editar.bind(this), label: 'Editar' },
   ];
 
-  constructor(private clientesService: ClientesService) {}
+  constructor(
+    private clientesService: ClientesService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.items$ = this.clientesService.retornaClientes();
   }
 
-  visualizar() {}
+  visualizar(cliente: Cliente) {
+    this.router.navigate(['home/clientes/view', cliente.id]);
+  }
 
   editar() {}
 }
