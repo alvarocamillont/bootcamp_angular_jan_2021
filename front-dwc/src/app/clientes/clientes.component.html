@@ -3,9 +3,11 @@
   [p-actions]="actions"
   [p-breadcrumb]="breadcrumb"
 >
-  <po-table
-    [p-columns]="colunas"
-    [p-items]="items"
-    [p-actions]="tableActions"
-  ></po-table>
+  <div *ngIf="items$ | async as items">
+    <po-table
+      [p-columns]="colunas"
+      [p-items]="items"
+      [p-actions]="tableActions"
+    ></po-table>
+  </div>
 </po-page-list>

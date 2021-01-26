@@ -5,17 +5,16 @@ import {
   PoTableAction,
   PoTableColumn,
 } from '@po-ui/ng-components';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ClientesService } from './clientes.service';
+import { Clientes } from './models/clientes';
 
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
   styleUrls: ['./clientes.component.css'],
 })
-export class ClientesComponent implements OnInit, OnDestroy {
-  private subscriptions = new Subscription();
-
+export class ClientesComponent implements OnInit {
   actions: Array<PoPageAction> = [
     {
       label: 'Incluir',
@@ -27,7 +26,7 @@ export class ClientesComponent implements OnInit, OnDestroy {
     items: [{ label: 'Home', link: '/home' }, { label: 'Cliente' }],
   };
 
-  items: any;
+  items$: Observable<Clientes>;
 
   colunas: Array<PoTableColumn> = [
     { property: 'id', label: 'ID', type: 'string' },
@@ -44,15 +43,7 @@ export class ClientesComponent implements OnInit, OnDestroy {
   constructor(private clientesService: ClientesService) {}
 
   ngOnInit(): void {
-    this.subscriptions.add(
-      this.clientesService.retornaClientes().subscribe((items) => {
-        this.items = items;
-      })
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
+    this.items$ = this.clientesService.retornaClientes();
   }
 
   visualizar() {}

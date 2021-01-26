@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, pluck } from 'rxjs/operators';
 import { Clientes, ClientesAPI } from './models/clientes';
 
 @Injectable({
@@ -13,6 +13,6 @@ export class ClientesService {
   retornaClientes(): Observable<Clientes> {
     return this.http
       .get<ClientesAPI>('http://localhost:3000/clientes')
-      .pipe(map((api) => api.items));
+      .pipe(pluck('items'));
   }
 }
