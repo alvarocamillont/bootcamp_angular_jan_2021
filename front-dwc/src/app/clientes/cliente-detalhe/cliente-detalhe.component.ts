@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PoDialogService, PoNotificationService } from '@po-ui/ng-components';
 import { switchMap } from 'rxjs/operators';
 import { CidadesService } from 'src/app/shared/servicos/cidades.service';
 import { EstadosService } from 'src/app/shared/servicos/estados.service';
@@ -17,7 +18,10 @@ export class ClienteDetalheComponent implements OnInit {
 
   constructor(
     private clientesService: ClientesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private poAlert: PoDialogService,
+    private poNotification: PoNotificationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -30,17 +34,6 @@ export class ClienteDetalheComponent implements OnInit {
       .subscribe((cliente) => {
         this.cliente = cliente;
       });
-
-    /*
-    this.route.params.subscribe((params) => {
-      const { id } = params;
-      if (id) {
-        this.clientesService.retornaCliente(id).subscribe((cliente) => {
-          this.cliente = cliente;
-        });
-      }
-    });
-    */
   }
 
   get sexo(): string {
@@ -53,9 +46,26 @@ export class ClienteDetalheComponent implements OnInit {
     return sexoOpt[this.cliente.sexo] ?? sexoOpt.P;
   }
 
-  voltar() {}
+  voltar() {
+    window.history.back();
+  }
 
-  remover() {}
+  remover() {
+    this.poAlert.confirm({
+      title: 'Confirmação de exclusão',
+      message: ` Você tem certeza que quer apagar o cliente ${this.cliente.nome} ?`,
+      confirm: () => {
+        this.excluirCliente(this.cliente.id);
+      },
+    });
+  }
+
+  private excluirCliente(id: string) {
+    this.clientesService.apagaCliente(id).subscribe((_) => {
+      this.poNotification.success('Cliente excluído');
+      this.router.navigate(['home/clientes']);
+    });
+  }
 
   editar() {}
 }
