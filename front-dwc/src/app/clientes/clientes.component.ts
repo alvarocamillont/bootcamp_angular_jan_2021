@@ -7,6 +7,8 @@ import {
   PoTableColumn,
 } from '@po-ui/ng-components';
 import { Observable, Subscription } from 'rxjs';
+import { CidadesService } from '../shared/servicos/cidades.service';
+import { EstadosService } from '../shared/servicos/estados.service';
 import { ClientesService } from './clientes.service';
 import { Cliente, Clientes } from './models/clientes';
 

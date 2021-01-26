@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { CidadesService } from 'src/app/shared/servicos/cidades.service';
+import { EstadosService } from 'src/app/shared/servicos/estados.service';
 import { ClientesService } from '../clientes.service';
 import { Cliente } from '../models/clientes';
 
@@ -18,6 +21,17 @@ export class ClienteDetalheComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.route.params
+      .pipe(
+        switchMap((params) =>
+          this.clientesService.retornaClienteComEnderecoCompleto(params.id)
+        )
+      )
+      .subscribe((cliente) => {
+        this.cliente = cliente;
+      });
+
+    /*
     this.route.params.subscribe((params) => {
       const { id } = params;
       if (id) {
@@ -26,6 +40,7 @@ export class ClienteDetalheComponent implements OnInit {
         });
       }
     });
+    */
   }
 
   get sexo(): string {
