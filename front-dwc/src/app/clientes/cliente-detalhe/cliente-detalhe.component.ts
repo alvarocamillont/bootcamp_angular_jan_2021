@@ -43,7 +43,7 @@ export class ClienteDetalheComponent implements OnInit {
       P: 'Prefiro não informar',
     };
 
-    return sexoOpt[this.cliente.sexo] ?? sexoOpt.P;
+    return sexoOpt[this.cliente?.sexo] ?? sexoOpt.P;
   }
 
   voltar() {
@@ -67,5 +67,7 @@ export class ClienteDetalheComponent implements OnInit {
     });
   }
 
-  editar() {}
+  editar() {
+    this.router.navigate(['home/clientes/edit', this.cliente.id]);
+  }
 }

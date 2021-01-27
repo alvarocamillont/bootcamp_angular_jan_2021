@@ -5,12 +5,12 @@
   (p-edit)="editar()"
 >
   <div class="po-row">
-    <po-info class="po-md-2" p-label="ID" [p-value]="cliente.id"></po-info>
-    <po-info class="po-md-4" p-label="Nome" [p-value]="cliente.nome"></po-info>
+    <po-info class="po-md-2" p-label="ID" [p-value]="cliente?.id"></po-info>
+    <po-info class="po-md-4" p-label="Nome" [p-value]="cliente?.nome"></po-info>
     <po-info
       class="po-md-3"
       p-label="Data Nascimento"
-      [p-value]="cliente.dataNascimento | date"
+      [p-value]="cliente?.dataNascimento | date"
     ></po-info>
     <po-info class="po-md-3" p-label="Sexo" [p-value]="sexo"></po-info>
   </div>
@@ -21,17 +21,17 @@
     <po-info
       class="po-md-4"
       p-label="Endereço"
-      [p-value]="cliente.endereco"
+      [p-value]="cliente?.endereco"
     ></po-info>
     <po-info
       class="po-md-4"
       p-label="Cidade"
-      [p-value]="cliente.cidade"
+      [p-value]="cliente?.cidade"
     ></po-info>
     <po-info
       class="po-md-4"
       p-label="Estado"
-      [p-value]="cliente.estado"
+      [p-value]="cliente?.estado"
     ></po-info>
   </div>
 </po-page-detail>
