@@ -37,6 +37,10 @@ export class HomeComponent implements OnInit {
         label: 'Clientes',
         link: '/home/clientes',
       },
+      {
+        label: 'Produtos',
+        link: '/home/produtos',
+      },
     ];
   }
 
