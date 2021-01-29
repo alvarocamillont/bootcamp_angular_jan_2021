@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { PoTemplatesModule } from '@po-ui/ng-templates';
 
 import { FormularioProdutosComponent } from './formulario-produtos.component';
 
@@ -8,9 +10,9 @@ describe('FormularioProdutosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormularioProdutosComponent ]
-    })
-    .compileComponents();
+      declarations: [FormularioProdutosComponent],
+      imports: [PoTemplatesModule, RouterTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
