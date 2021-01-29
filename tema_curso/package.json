@@ -1,0 +1,14 @@
+{
+  "name": "tema_curso",
+  "version": "1.0.0",
+  "author": "",
+  "description": "Po Custom Theme - tema_curso",
+  "repository": {},
+  "license": "MIT",
+  "scripts": {
+    "build": "po-theme build"
+  },
+  "devDependencies": {
+    "@po-ui/style": "^2.0.0-beta.1"
+  }
+}
