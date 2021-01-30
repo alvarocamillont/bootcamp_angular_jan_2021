@@ -1,9 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import {
-  PoPageDynamicDetailOptions,
-  PoPageDynamicEditOptions,
-  PoPageDynamicTableOptions,
-} from '@po-ui/ng-templates';
 import { Utils } from 'src/utils/utils';
 import { produtos } from './db/produtos.data';
 import { Produto, Produtos, ProdutosAPI } from './produtos.interface';
@@ -44,7 +39,7 @@ export class ProdutosService {
     return this.getProduto(id);
   }
 
-  tableMetada(): PoPageDynamicTableOptions {
+  tableMetada() {
     return {
       fields: [
         { property: 'categoria', label: 'Categoria' },
@@ -53,7 +48,7 @@ export class ProdutosService {
     };
   }
 
-  editMetada(): PoPageDynamicEditOptions {
+  editMetada() {
     return {
       fields: [
         { property: 'categoria', label: 'Categoria' },
@@ -63,7 +58,7 @@ export class ProdutosService {
     };
   }
 
-  viewMetada(): PoPageDynamicDetailOptions {
+  viewMetada() {
     return {
       fields: [
         { property: 'categoria', label: 'Categoria' },

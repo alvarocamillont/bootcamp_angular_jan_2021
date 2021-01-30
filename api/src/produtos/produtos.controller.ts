@@ -16,11 +16,6 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 
-import {
-  PoPageDynamicDetailOptions,
-  PoPageDynamicEditOptions,
-  PoPageDynamicTableOptions,
-} from '@po-ui/ng-templates';
 
 import { ParamQueryId, QueryApi } from 'src/core/interfaces/query.interface';
 import { CreateProdutosDto } from './dto/create-produtos.dto';
@@ -74,19 +69,19 @@ export class ProdutosController {
 
   @ApiResponse({ status: 201 })
   @Post('/load/table')
-  tableMetadata(): PoPageDynamicTableOptions {
+  tableMetadata() {
     return this.produtosService.tableMetada();
   }
 
   @ApiResponse({ status: 201 })
   @Post('/load/edit')
-  editMetadata(): PoPageDynamicEditOptions {
+  editMetadata() {
     return this.produtosService.editMetada();
   }
 
   @ApiResponse({ status: 201 })
   @Post('/load/view')
-  viewMetadata(): PoPageDynamicDetailOptions {
+  viewMetadata() {
     return this.produtosService.viewMetada();
   }
 
